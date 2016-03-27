@@ -10,19 +10,32 @@
 using namespace std;
 
 int summation(int number);
+int factorial(int number);
 
 int main() {
   int n;
   cout << "Please enter an integer: " << endl;
   cin >> n;
-  cout << summation(n) << endl;
-
- return 0;
+  cout << "Summation: " <<  summation(n) << endl;
+  cout << "Factorial: " <<  factorial(n) << endl;
+  
+  return 0;
 }
 
 int summation(int number){
-  int returnValue = 0;
-  for(int i = 0; i <= number; i++)
-    returnValue += i;
-  return returnValue;
+  if(number == 0)
+    return 0;
+
+  int temp;
+  temp = number + summation(number - 1);
+  return temp;
+}
+
+int factorial(int number){
+  if(number == 1)
+    return 1;
+  
+  int temp;
+  temp = number * factorial(number - 1);
+  return temp;
 }
